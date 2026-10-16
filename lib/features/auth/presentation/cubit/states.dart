@@ -1,4 +1,4 @@
-import 'package:flutter_base_architecture/features/auth/data/models/login_model.dart';
+import 'package:product_cart_app/features/auth/data/models/login_model.dart';
 
 abstract class LoginState{}
 

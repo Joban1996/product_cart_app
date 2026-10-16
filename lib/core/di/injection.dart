@@ -1,8 +1,8 @@
-import 'package:flutter_base_architecture/core/network/dio_client.dart';
-import 'package:flutter_base_architecture/core/storage/secure_storage_utils.dart';
-import 'package:flutter_base_architecture/features/auth/data/data_source/auth_remote_datasource.dart';
-import 'package:flutter_base_architecture/features/auth/data/repositories/auth_repositories.dart';
-import 'package:flutter_base_architecture/features/auth/data/repositories/auth_repository_implementation.dart';
+import 'package:product_cart_app/core/network/dio_client.dart';
+import 'package:product_cart_app/core/storage/secure_storage_utils.dart';
+import 'package:product_cart_app/features/auth/data/data_source/auth_remote_datasource.dart';
+import 'package:product_cart_app/features/auth/data/repositories/auth_repositories.dart';
+import 'package:product_cart_app/features/auth/data/repositories/auth_repository_implementation.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/auth/presentation/cubit/auth_cubit.dart';
