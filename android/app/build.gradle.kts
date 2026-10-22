@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.joban1996.flutter_base_architecture"
+    namespace = "com.joban1996.product_cart_app"
     compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.joban1996.flutter_base_architecture"
+        applicationId = "com.joban1996.product_cart_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

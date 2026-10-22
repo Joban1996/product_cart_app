@@ -8,7 +8,7 @@ class DioClient {
   final Dio dio;
 
   DioClient() : dio = Dio(BaseOptions(
-    baseUrl: 'https://jsonplaceholder.typicode.com/',
+    baseUrl: 'https://fakestoreapi.com/',
     connectTimeout: Duration(seconds: 15),
     receiveTimeout: Duration(seconds: 15),
     headers: {'Accept':'application/json'}
