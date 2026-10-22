@@ -5,10 +5,13 @@ import 'package:product_cart_app/features/auth/data/models/product_model.dart';
 
 class ProductListTile extends StatelessWidget {
   const ProductListTile({super.key,
-    required this.product, required this.isInCart,required this.onCartTap});
+    required this.product, required this.isInCart,required this.onCartTap,
+    required this.isInWishlist, this.onHeartTap});
   final ProductModel product;
   final bool isInCart;
   final VoidCallback onCartTap;
+  final bool isInWishlist;
+  final VoidCallback? onHeartTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +22,24 @@ class ProductListTile extends StatelessWidget {
         spacing: 4.0,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         Container(
-           decoration: BoxDecoration(color: AppColors.textSecondary,borderRadius: BorderRadius.circular(8)),
-             padding: EdgeInsets.all(4),
-             child: Image.network(product.image,
-               fit: BoxFit.contain,height: 110,width: double.infinity,)),
+         Stack(
+           alignment: Alignment.topRight,
+           children: [
+             Container(
+               decoration: BoxDecoration(color: AppColors.textSecondary,borderRadius: BorderRadius.circular(8)),
+                 padding: EdgeInsets.all(4),
+                 child: Image.network(product.image,
+                   fit: BoxFit.contain,height: 110,width: double.infinity,)),
+             InkWell(
+               onTap: onHeartTap??(){},
+               child: Padding(
+                 padding: const EdgeInsets.all(4.0),
+                 child: isInWishlist ? Icon(Icons.favorite,size: 22,color: AppColors.bgRed,)
+                     : Icon(Icons.favorite_outline_sharp,size: 22,),
+               ),
+             )
+           ],
+         ),
           Text(product.title,style: TextStyle(color: AppColors.textPrimary),
             maxLines: 2,overflow: TextOverflow.ellipsis,),
           Text(product.category.name,style: TextStyle(fontSize: AppFontSizes.xs),),

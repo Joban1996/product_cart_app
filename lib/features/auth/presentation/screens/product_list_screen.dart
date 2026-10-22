@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_cart_app/core/utils/size_utils.dart';
+import 'package:product_cart_app/features/auth/presentation/bloc/wishlist_bloc.dart';
 import 'package:product_cart_app/features/auth/presentation/cubit/cart_cubit.dart';
 import 'package:product_cart_app/features/auth/presentation/cubit/product_cubit.dart';
+import 'package:product_cart_app/features/auth/presentation/events/wishlist_events.dart';
 import 'package:product_cart_app/features/auth/presentation/states/product_states.dart';
 import 'package:product_cart_app/features/auth/presentation/screens/widgets/product_list_tile.dart';
 import 'package:product_cart_app/features/auth/presentation/screens/widgets/products_app_bar.dart';
@@ -15,8 +17,10 @@ class ProductListScreen extends StatelessWidget {
     final double itemHeight = (context.screenHeight - kToolbarHeight - 24) / 2.8;
     final double itemWidth = context.screenWidth / 2;
     final cartItems = context.watch<CartCubit>().cartItems;
+    final wishlistItems = context.watch<WishlistBloc>().wishlistItems;
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size.fromHeight(kToolbarHeight), child: ProductsAppBar()),
+      appBar: PreferredSize(preferredSize: Size.fromHeight(kToolbarHeight),
+          child: ProductsAppBar(title: 'Products', isActions: true,)),
       body: Column(
         children: [
           SizedBox(height: 16,),
@@ -53,7 +57,12 @@ class ProductListScreen extends StatelessWidget {
                           isInCart: cartItems.any((item)=> item.id == state.data[index].id),
                           onCartTap: () {
                             context.read<CartCubit>().toggleCart(state.data[index]);
-                          },);
+                          },
+                          isInWishlist: wishlistItems.any((item)=> item.id == state.data[index].id),
+                          onHeartTap: (){
+                            context.read<WishlistBloc>().add(AddToWishlist(state.data[index]));
+                          },
+                        );
                       }),
                 );
               }

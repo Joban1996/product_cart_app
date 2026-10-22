@@ -34,7 +34,7 @@ class CartScreen extends StatelessWidget {
               product: cartItems[index],
               isInCart: true, onCartTap: () {
                 context.read<CartCubit>().toggleCart(cartItems[index]);
-            },);
+            }, isInWishlist: false,);
           });
         }
         return Container();
