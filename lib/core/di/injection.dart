@@ -4,6 +4,7 @@ import 'package:product_cart_app/features/auth/data/data_source/get_products_dat
 import 'package:product_cart_app/features/auth/data/repositories/product_repositories.dart';
 import 'package:product_cart_app/features/auth/data/repositories/product_repository_implementation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:product_cart_app/features/auth/presentation/bloc/coupon_bloc.dart';
 import 'package:product_cart_app/features/auth/presentation/bloc/wishlist_bloc.dart';
 import 'package:product_cart_app/features/auth/presentation/cubit/cart_cubit.dart';
 import 'package:product_cart_app/features/auth/presentation/cubit/product_cubit.dart';
@@ -24,5 +25,6 @@ Future<void> setUpLocator()async {
   getIt.registerLazySingleton<ProductCubit>(()=> ProductCubit(getIt<ProductsRepositories>()));
   getIt.registerLazySingleton<CartCubit>(()=> CartCubit());
   getIt.registerLazySingleton<WishlistBloc>(()=>WishlistBloc());
+  getIt.registerLazySingleton<CouponBloc>(()=>CouponBloc());
 
 }

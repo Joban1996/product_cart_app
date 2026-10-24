@@ -10,7 +10,8 @@ import 'package:product_cart_app/features/auth/presentation/screens/widgets/prod
 import 'package:product_cart_app/features/auth/presentation/screens/widgets/products_app_bar.dart';
 
 class ProductListScreen extends StatelessWidget {
-  const ProductListScreen({super.key});
+   ProductListScreen({super.key});
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +30,11 @@ class ProductListScreen extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(right: 8,left: 8),
               child: TextField(
+                onChanged: (val)=> context.read<ProductCubit>().searchProducts(val),
+                controller: searchController,
                 cursorHeight: 16,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(8),
-
                     prefixIcon: Icon(Icons.search),
                     hint: Text('Search Products..'),border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(32))),
